@@ -1,6 +1,6 @@
 # 机器学习课程教材初稿
 
-从 [学习入口](docs/index.md) 开始；可直接打开生成的 `site/index.html`。当前正文覆盖十章主线：前三章用 2026 主课件，后续用往年资料。**全资料逐页视觉验收尚未完成**，详见 [建设与验收记录](docs/audit.md)。
+在线阅读：[机器学习课程教材](https://wly63227.github.io/UCAS-machine-learning/)。也可以从仓库内的 [学习入口](docs/index.md) 开始，或本地构建后打开 `site/index.html`。当前正文覆盖十章主线：前三章用 2026 主课件，后续用往年资料。**全资料逐页视觉验收尚未完成**，详见 [建设与验收记录](docs/audit.md)。
 
 ## 环境与命令
 
@@ -31,6 +31,6 @@ python -m http.server 8765 --bind 127.0.0.1 --directory site
 - `deploy/`：GitHub Pages 工作流模板。
 - `进度.md`：下一次恢复工作的位置。
 
-遵循仓库根目录的 `AGENTS.md`。项目仓库为 [wly63227/UCAS-machine-learning](https://github.com/wly63227/UCAS-machine-learning)，按用户确认保持公开。上传内容包括教材源码与索引，不含原始 PDF、参考书、依赖、缓存和截图。GitHub Actions 只运行检查并保存离线网站构建产物，不启用 Pages。
+遵循仓库根目录的 `AGENTS.md`。项目仓库为 [wly63227/UCAS-machine-learning](https://github.com/wly63227/UCAS-machine-learning)，按用户确认保持公开。上传内容包括教材源码与索引，不含原始 PDF、参考书、依赖、缓存和截图。GitHub Actions 在 `main` 更新后执行检查并部署 GitHub Pages；线上 `version.json` 记录构建提交，便于确认发布版本。
 
 网站不用 VitePress：采用规模较小的静态生成器，实现同一 Markdown 来源、本地数学、全文搜索、前后导航、深浅色与移动阅读，减少构建依赖。后续如需迁移，稳定锚点和 Markdown 可直接保留。

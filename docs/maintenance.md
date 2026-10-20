@@ -20,8 +20,8 @@
 
 当前基线检查稳定锚点、章节长度的大幅减少和行间公式数量下降。它能发现一些意外删除，不能判断等长替换是否正确，也不能证明内容完整。来源覆盖审校仍是独立门禁。新增内容不应通过复制模板填充长度。
 
-## GitHub Pages 部署准备
+## GitHub Pages 自动部署
 
-项目提供 `deploy/github-pages.yml` 模板。将 `教材` 目录作为独立仓库根目录后，把该模板放到 `.github/workflows/pages.yml`，提交源码、锁文件与基线，设置仓库 Pages 来源为 GitHub Actions。构建输出为 `site/`，不包括上一级原始 PDF。
+当前仓库启用 `.github/workflows/pages.yml`，并保留 `deploy/github-pages.yml` 模板。仓库 Pages 来源设置为 GitHub Actions，`main` 更新后自动发布。构建输出为 `site/`，不包括上一级原始 PDF。公开网址为 [机器学习课程教材](https://wly63227.github.io/UCAS-machine-learning/)。
 
-CI 先安装 Python／Node 依赖，重建图表与索引，执行数学检查、构建和链接检查，再上传静态产物。发布仍不代表内容最终验收通过；首页的初稿与版本边界应保留，直至相关内容门禁关闭。
+CI 先安装 Python／Node 依赖，重建图表与索引，执行数学检查、构建和链接检查，再上传静态产物。线上 `version.json` 包含构建提交 SHA 和 UTC 构建时间。发布仍不代表内容最终验收通过；首页的初稿与版本边界应保留，直至相关内容门禁关闭。
