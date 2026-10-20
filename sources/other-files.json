@@ -1,0 +1,27 @@
+[
+  {
+    "file": "2f830756d2f83a2ea6c09f6878b20e33.jpg",
+    "bytes": 273285,
+    "sha256": "7020542c2907ee95d0a8afed5afbe6b7ca3b15eef2563914abbb76031e4cc6ee"
+  },
+  {
+    "file": "AGENTS.md",
+    "bytes": 1543,
+    "sha256": "1e35003b484a5afa195bb3d1ddcd9058c8fdfec0ea34289fec08d4f9abcdacca"
+  },
+  {
+    "file": "knowledge-prompt(1).md",
+    "bytes": 21352,
+    "sha256": "cdc68b112622a76d3cac3d915da9cb41c82116d9547a009ea3f55b77068dfaf2"
+  },
+  {
+    "file": "学习笔记_第二章_贝叶斯学习.md",
+    "bytes": 26084,
+    "sha256": "cc05169a05d3d7c066e1956074e103d48d9c280909f13e53542b3c0d252bc98d"
+  },
+  {
+    "file": "往年课件.zip",
+    "bytes": 39227026,
+    "sha256": "e68efa00a2e5b61a170e5f226353902b5d49cadfb9bfed11ae823aab93cd7fac"
+  }
+]

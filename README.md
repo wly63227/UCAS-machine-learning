@@ -31,6 +31,6 @@ python -m http.server 8765 --bind 127.0.0.1 --directory site
 - `deploy/`：GitHub Pages 工作流模板。
 - `进度.md`：下一次恢复工作的位置。
 
-遵循仓库根目录的 `AGENTS.md`。项目仓库为 [wly63227/UCAS-machine-learning](https://github.com/wly63227/UCAS-machine-learning)，可见性为私有。上传内容包括教材源码与索引，不含原始 PDF、参考书、依赖、缓存和截图。GitHub Actions 只运行检查并保存离线网站构建产物，不启用 Pages。
+遵循仓库根目录的 `AGENTS.md`。项目仓库为 [wly63227/UCAS-machine-learning](https://github.com/wly63227/UCAS-machine-learning)，按用户确认保持公开。上传内容包括教材源码与索引，不含原始 PDF、参考书、依赖、缓存和截图。GitHub Actions 只运行检查并保存离线网站构建产物，不启用 Pages。
 
 网站不用 VitePress：采用规模较小的静态生成器，实现同一 Markdown 来源、本地数学、全文搜索、前后导航、深浅色与移动阅读，减少构建依赖。后续如需迁移，稳定锚点和 Markdown 可直接保留。

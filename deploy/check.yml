@@ -1,0 +1,33 @@
+name: Validate textbook
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '10'
+      - run: pip install -r requirements.txt
+      - run: pnpm install --frozen-lockfile
+      - run: python scripts/figures.py
+      - run: python scripts/indexes.py
+      - run: python scripts/verify_math.py
+      - run: node scripts/build.mjs
+      - run: node scripts/check.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: offline-textbook
+          path: site/
+          retention-days: 14
