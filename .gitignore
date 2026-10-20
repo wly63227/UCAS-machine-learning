@@ -1,0 +1,9 @@
+node_modules/
+.pnpm-store/
+site/
+sources/text/
+sources/review/
+__pycache__/
+qa/
+*.zip
+_tmp_*
