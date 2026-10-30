@@ -42,14 +42,23 @@ for xi,di in zip(online_x,online_d):
 check('perceptron online slide example',close(online_w,[-1,1,0]) and close(online_x@online_w,[1,1,-1,-1]))
 check('four-class pairwise and tournament counts',4*(4-1)//2==6 and 4-1==3)
 check('tree information gain',close(1+2*(.75*math.log2(.75)+.25*math.log2(.25))/2,.18872187554086717))
+root_entropy=-(8/17)*math.log2(8/17)-(9/17)*math.log2(9/17)
+color_gain=root_entropy-(6/17*1+6/17*(-4/6*math.log2(4/6)-2/6*math.log2(2/6))+5/17*(-1/5*math.log2(1/5)-4/5*math.log2(4/5)))
+check('watermelon decision-tree slide gain',close(root_entropy,.9975025463691153) and close(color_gain,.10812516526536531))
 check('three-classifier majority',close(3*.7**2*.3+.7**3,.784))
 check('AdaBoost multiplier',close(math.exp(2*.5*math.log(.7/.3)),7/3))
+p1=.3; w1=.1*(1-p1)/p1; p2=3*.1/(7*.1+3*w1); w2=.1*(1-p2)/p2; p3=3*.1/(4*.1+3*w1+3*w2)
+check('AdaBoost three-round slide example',np.allclose([p2,p3],[.2142857142857143,.13636363636363635],rtol=2e-3) and np.allclose([.5*math.log((1-p2)/p2),.5*math.log((1-p3)/p3)],[.6493,.9223],rtol=2e-3))
 X=np.array([[0.,1.],[1.,1.],[2.,1.]]);y=np.array([1.,2.,2.]);coef=np.linalg.lstsq(X,y,rcond=None)[0]
 check('least squares coefficients',close(coef,[.5,7/6]))
 check('least squares normal residual',close(X.T@(y-X@coef),[0,0]))
 check('least squares MSE',close(np.mean((y-X@coef)**2),1/18))
 data=np.array([0.,2.,8.,10.]);centers=np.array([0.,8.]);labels=abs(data[:,None]-centers).argmin(axis=1);before=sum((data-centers[labels])**2);new=np.array([data[labels==k].mean() for k in range(2)])
 check('K-means monotone update',close(before,8) and close(sum((data-new[labels])**2),4))
+melon30=np.array([[.697,.460],[.774,.376],[.634,.264],[.608,.318],[.556,.215],[.403,.237],[.481,.149],[.437,.211],[.666,.091],[.243,.267],[.245,.057],[.343,.099],[.639,.161],[.657,.198],[.360,.370],[.593,.042],[.719,.103],[.359,.188],[.339,.241],[.282,.257],[.748,.232],[.714,.346],[.483,.312],[.478,.437],[.525,.369],[.751,.489],[.532,.472],[.473,.376],[.725,.445],[.446,.459]])
+clusters=[[5,6,7,8,9,10,13,14,15,17,18,19,20,23],[11,12,16],[1,2,3,4,21,22,24,25,26,27,28,29,30]]
+melon_means=np.array([melon30[np.array(c)-1].mean(axis=0) for c in clusters])
+check('watermelon K-means slide first update',np.allclose(melon_means,[[.473,.214],[.394,.066],[.623,.388]],rtol=2e-3,atol=6e-4))
 aa=np.array([0.,1.,5.]);bb=np.array([8.,9.]);point=5.;na=len(aa);nb=len(bb)
 delta=nb/(nb+1)*(point-bb.mean())**2-na/(na-1)*(point-aa.mean())**2
 sse=lambda x:sum((x-x.mean())**2)
@@ -57,6 +66,9 @@ check('single transfer identity',close(delta,sse(aa[:-1])+sse(np.append(bb,point
 P=np.array([[-2.,0.],[-1.,0.],[1.,0.],[2.,0.]])
 check('PCA covariance eigenvalues',close(np.linalg.eigvalsh(P.T@P/4),[0.,2.5]))
 check('maximum entropy example',close(.15+.15+3*7/30,1))
+# Grass Bayesian-network example from S14.
+grass_parts=np.array([.99*.01*.2,.9*.4*.8,.8*.99*.2,0*.6*.8])
+check('grass Bayesian-network slide example',close(grass_parts[0],.00198) and close(.9*.4+0*.6,.36) and np.allclose((grass_parts[0]+grass_parts[2])/grass_parts.sum(),.3577,rtol=2e-4) and np.allclose((grass_parts[0]+grass_parts[1])/grass_parts.sum(),.6467,rtol=2e-4))
 # HMM forward and Viterbi independently compared with complete path enumeration.
 A=np.array([[.7,.3],[.4,.6]]);B=np.array([[.9,.1],[.2,.8]]);pi=np.array([.6,.4]);obs=[0,1,0]
 alpha=pi*B[:,obs[0]];v=alpha.copy()
@@ -69,6 +81,16 @@ for z in itertools.product(range(2),repeat=3):
 check('HMM forward versus enumeration',close(alpha.sum(),sum(probs)))
 check('Viterbi versus enumeration',close(v.max(),max(probs)))
 hmm_best=float(v.max())
+# Envelope HMM from S15: red, black, black, black, red.
+Ae=np.array([[0.,1.],[.5,.5]]);Be=np.array([[0.,1.],[.5,.5]]);pie=np.array([.5,.5]);obse=[0,1,1,1,0]
+alphae=pie*Be[:,obse[0]];ve=alphae.copy();back=[]
+for o in obse[1:]:
+    alphae=(alphae@Ae)*Be[:,o]
+    scores=ve[:,None]*Ae;back.append(scores.argmax(axis=0));ve=scores.max(axis=0)*Be[:,o]
+state=int(ve.argmax());path=[state]
+for bp in reversed(back):state=int(bp[state]);path.append(state)
+path=path[::-1]
+check('envelope HMM slide example',close(alphae.sum(),.0283203125) and close(ve.max(),.015625) and path==[1,0,1,0,1])
 # Logistic gradient central finite differences, including bias.
 XX=np.array([[1.,2.,1.],[-1.,.5,1.],[.3,-2.,1.]]);yy=np.array([1.,0.,1.]);theta=np.array([.2,-.4,.1])
 loss=lambda t:np.mean(np.logaddexp(0,XX@t)-yy*(XX@t))
@@ -83,7 +105,7 @@ def network(t):
 W,b,v,c=unpack(t);h=np.tanh(W@x+b);e=v@h+c-target;delta=e*v*(1-h*h);grad=np.r_[(delta[:,None]*x).ravel(),delta,e*h,e]
 fd=np.array([(network(t+eps*np.eye(9)[j])-network(t-eps*np.eye(9)[j]))/(2*eps) for j in range(9)])
 check('multilayer BP all-parameter finite difference',close(grad,fd))
-check('CNN output and parameter count',(32-5)//1+1==28 and 6*(5*5*3+1)==456)
+check('CNN output and parameter count',(32-5)//1+1==28 and 6*(5*5*3+1)==456 and (7-3)//1+1==5 and 3*3+1==10)
 for x1,x2 in itertools.product([0.,1.],repeat=2):check(f'XOR {x1},{x2}',close(max(0,x1+x2)-2*max(0,x1+x2-1),int(x1!=x2)))
 out={'passed':len(checks),'checks':checks,'weather_posterior':p,'hmm_likelihood':float(alpha.sum()),'hmm_best_path_probability':hmm_best,'randomness':'none; deterministic inputs'}
 (Path(__file__).resolve().parents[1]/'math-report.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')

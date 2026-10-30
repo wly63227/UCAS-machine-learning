@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-label="西瓜决策树：根节点按纹理划分"><rect width="760" height="360" fill="#fff"/><style>text{font:14px sans-serif;fill:#23383b}.axis{stroke:#6b7779;stroke-width:1;fill:none}.main{stroke:#087f8c;fill:none;stroke-width:3}.alt{stroke:#a34b32;fill:none;stroke-width:3;stroke-dasharray:8 5}</style><text x="40" y="30" font-weight="bold">西瓜决策树：根节点按纹理划分</text><defs><marker id="arrdt" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#6b7779"/></marker></defs>
+<g text-anchor="middle"><rect x="315" y="52" width="130" height="38" rx="7" fill="#e6f2f0" stroke="#087f8c"/><text x="380" y="77">纹理？</text>
+<rect x="125" y="135" width="110" height="38" rx="7" fill="#fff" stroke="#087f8c"/><text x="180" y="160">根蒂？</text>
+<rect x="325" y="135" width="110" height="38" rx="7" fill="#fff" stroke="#087f8c"/><text x="380" y="160">触感？</text>
+<ellipse cx="595" cy="154" rx="48" ry="24" fill="#f4e6e1" stroke="#a34b32"/><text x="595" y="159">坏瓜</text>
+<ellipse cx="75" cy="245" rx="46" ry="24" fill="#e6f2f0" stroke="#087f8c"/><text x="75" y="250">好瓜</text>
+<rect x="150" y="226" width="105" height="38" rx="7" fill="#fff" stroke="#087f8c"/><text x="202" y="251">色泽？</text>
+<ellipse cx="285" cy="245" rx="46" ry="24" fill="#f4e6e1" stroke="#a34b32"/><text x="285" y="250">坏瓜</text>
+<ellipse cx="355" cy="245" rx="46" ry="24" fill="#e6f2f0" stroke="#087f8c"/><text x="355" y="250">好瓜</text>
+<ellipse cx="455" cy="245" rx="46" ry="24" fill="#f4e6e1" stroke="#a34b32"/><text x="455" y="250">坏瓜</text></g>
+<g stroke="#6b7779" fill="none"><path d="M335 90L205 135"/><path d="M380 90V135"/><path d="M425 90L570 135"/><path d="M150 173L92 222"/><path d="M180 173L195 226"/><path d="M218 173L276 222"/><path d="M355 173V221"/><path d="M405 173L445 221"/></g>
+<g font-size="12"><text x="255" y="112">清晰</text><text x="390" y="115">稍糊</text><text x="515" y="112">模糊</text><text x="102" y="205">蜷缩</text><text x="185" y="202">稍蜷</text><text x="245" y="202">硬挺</text><text x="335" y="205">硬滑</text><text x="420" y="205">软粘</text><text x="95" y="300">“稍蜷”分支继续按色泽与触感划分；图中省略三级叶的重复标签。</text></g></svg>

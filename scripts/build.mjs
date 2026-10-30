@@ -40,5 +40,5 @@ fs.cpSync(path.join(docs,'assets'),path.join(out,'assets'),{recursive:true});
 fs.cpSync(path.join(root,'node_modules/katex/dist'),path.join(out,'assets/katex'),{recursive:true});
 fs.writeFileSync(path.join(out,'assets/search-data.js'),'window.ML_SEARCH='+JSON.stringify(index)+';');
 fs.writeFileSync(path.join(out,'version.json'),JSON.stringify({commit:sourceCommit,builtAt:new Date().toISOString(),contentStatus:'draft'},null,2));
-fs.writeFileSync(path.join(root,'build-report.json'),JSON.stringify({pages:ordered.length,formulas:formulaCount,mathEngine:'KaTeX local HTML + MathML',date:'2026-10-20'},null,2));
+fs.writeFileSync(path.join(root,'build-report.json'),JSON.stringify({pages:ordered.length,formulas:formulaCount,mathEngine:'KaTeX local HTML + MathML',date:'2026-10-30'},null,2));
 console.log(`Built ${ordered.length} pages; rendered ${formulaCount} formulas locally.`);

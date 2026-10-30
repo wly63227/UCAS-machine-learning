@@ -1,7 +1,7 @@
 [
   {
     "id": "ml-01-01",
-    "title": "1.1 从写规则到用数据建立规则",
+    "title": "1.1 人工智能背景与机器学习的发展",
     "target": "chapters/01-intro.md#ml-01-01",
     "sources": [
       "S01 1–7",
@@ -12,7 +12,7 @@
   },
   {
     "id": "ml-01-02",
-    "title": "1.2 分类、回归与无监督学习",
+    "title": "1.2 机器学习研究的问题：分类、回归与无监督学习",
     "target": "chapters/01-intro.md#ml-01-02",
     "sources": [
       "S01 42–54"
@@ -21,7 +21,7 @@
   },
   {
     "id": "ml-01-03",
-    "title": "1.3 模型、损失与优化",
+    "title": "1.3 课件的建模过程：数据、模型、误差与学习",
     "target": "chapters/01-intro.md#ml-01-03",
     "sources": [
       "S01 55–64"
@@ -30,8 +30,15 @@
   },
   {
     "id": "ml-01-04",
-    "title": "1.4 为什么训练误差不够",
+    "title": "1.4 编者补充：为什么训练误差不够",
     "target": "chapters/01-intro.md#ml-01-04",
+    "sources": [],
+    "depth": "概念与方法"
+  },
+  {
+    "id": "ml-01-06",
+    "title": "1.6 本章要点回顾：从七问到三元组",
+    "target": "chapters/01-intro.md#ml-01-06",
     "sources": [],
     "depth": "概念与方法"
   },
@@ -97,6 +104,13 @@
     "depth": "推导与例子"
   },
   {
+    "id": "ml-02-08",
+    "title": "2.8 从本章到后续章节：贝叶斯视角的延伸",
+    "target": "chapters/02-bayes.md#ml-02-08",
+    "sources": [],
+    "depth": "概念与方法"
+  },
+  {
     "id": "ml-03-01",
     "title": "3.1 从特征到超平面",
     "target": "chapters/03-linear.md#ml-03-01",
@@ -160,6 +174,27 @@
       "S05 42–49",
       "S06 61–62"
     ],
+    "depth": "概念与方法"
+  },
+  {
+    "id": "ml-03-08",
+    "title": "3.8 数值演练：Fisher 解的小例题",
+    "target": "chapters/03-linear.md#ml-03-08",
+    "sources": [],
+    "depth": "推导与例子"
+  },
+  {
+    "id": "ml-03-09",
+    "title": "3.9 数值演练：Logistic 的一步梯度下降",
+    "target": "chapters/03-linear.md#ml-03-09",
+    "sources": [],
+    "depth": "推导与例子"
+  },
+  {
+    "id": "ml-03-10",
+    "title": "3.10 本章要点回顾",
+    "target": "chapters/03-linear.md#ml-03-10",
+    "sources": [],
     "depth": "概念与方法"
   },
   {
@@ -266,8 +301,15 @@
     "depth": "概念与方法"
   },
   {
+    "id": "ml-05-06",
+    "title": "5.6 本章小结与练习",
+    "target": "chapters/05-regression.md#ml-05-06",
+    "sources": [],
+    "depth": "概念与方法"
+  },
+  {
     "id": "ml-06-01",
-    "title": "6.1 没有标签时，“一类”是什么",
+    "title": "6.1 没有标签时，\"一类\"是什么",
     "target": "chapters/06-clustering.md#ml-06-01",
     "sources": [
       "S25 1–18"
@@ -309,6 +351,13 @@
     "sources": [
       "S25 72–76"
     ],
+    "depth": "概念与方法"
+  },
+  {
+    "id": "ml-06-06",
+    "title": "6.6 收敛、初始化与常见陷阱",
+    "target": "chapters/06-clustering.md#ml-06-06",
+    "sources": [],
     "depth": "概念与方法"
   },
   {
@@ -360,6 +409,13 @@
     "depth": "推导与例子"
   },
   {
+    "id": "ml-07-06",
+    "title": "7.6 方法对照与选择指南",
+    "target": "chapters/07-features.md#ml-07-06",
+    "sources": [],
+    "depth": "概念与方法"
+  },
+  {
     "id": "ml-08-01",
     "title": "8.1 熵是平均意外程度",
     "target": "chapters/08-information.md#ml-08-01",
@@ -396,6 +452,13 @@
       "S13 28–34"
     ],
     "depth": "推导与例子"
+  },
+  {
+    "id": "ml-08-05",
+    "title": "8.5 数值例题、常见误区与跨章链接",
+    "target": "chapters/08-information.md#ml-08-05",
+    "sources": [],
+    "depth": "概念与方法"
   },
   {
     "id": "ml-09-01",
@@ -454,6 +517,13 @@
     "sources": [
       "S15 71–80"
     ],
+    "depth": "概念与方法"
+  },
+  {
+    "id": "ml-09-07",
+    "title": "9.7 本章速查与常见误区",
+    "target": "chapters/09-graphical.md#ml-09-07",
+    "sources": [],
     "depth": "概念与方法"
   },
   {
@@ -521,6 +591,13 @@
       "S19 63–69",
       "S19 70–74"
     ],
+    "depth": "概念与方法"
+  },
+  {
+    "id": "ml-10-07",
+    "title": "10.7 小结、常见误区与练习",
+    "target": "chapters/10-neural.md#ml-10-07",
+    "sources": [],
     "depth": "概念与方法"
   }
 ]
