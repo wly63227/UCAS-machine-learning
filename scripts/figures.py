@@ -49,4 +49,58 @@ for row,label in enumerate(['链：A → B → C','分叉：A ← B → C','碰�
         s+=f'<path d="M{a} {y}H{b}" stroke="#333"/><path d="M{tip+(-7 if right else 7)} {y-5}L{tip} {y}L{tip+(-7 if right else 7)} {y+5}" fill="none" stroke="#333"/>'
 s+='<text x="30" y="340">前两种：给定 B 阻断路径；碰撞：给定 B 或其后代会打开路径。</text>'
 save('d-separation.svg','三种局部结构：箭头相遇方式决定阻断规则',s)
-print('Generated 6 deterministic SVG figures.')
+
+# Course-aligned overview figures. These redraw the mathematical structure of
+# the slides instead of publishing slide screenshots.
+s='''
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#087f8c"/></marker></defs>
+<g text-anchor="middle">
+<rect x="35" y="105" width="145" height="70" rx="10" fill="#e6f2f0" stroke="#087f8c"/><text x="108" y="135" font-weight="bold">原始观测与标签</text><text x="108" y="158">训练数据 (x, y)</text>
+<rect x="225" y="105" width="145" height="70" rx="10" fill="#f4efe3" stroke="#a88442"/><text x="298" y="135" font-weight="bold">特征表达</text><text x="298" y="158">x ∈ R^d</text>
+<rect x="415" y="105" width="145" height="70" rx="10" fill="#e6f2f0" stroke="#087f8c"/><text x="488" y="135" font-weight="bold">学习算法</text><text x="488" y="158">拟合模型参数</text>
+<rect x="605" y="105" width="120" height="70" rx="10" fill="#f4efe3" stroke="#a88442"/><text x="665" y="135" font-weight="bold">训练模型</text><text x="665" y="158">f(x)</text>
+</g>
+<g stroke="#087f8c" stroke-width="2" marker-end="url(#arrow)"><path d="M180 140H220"/><path d="M370 140H410"/><path d="M560 140H600"/></g>
+<path d="M488 190V250H665" fill="none" stroke="#087f8c" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="365" y="230" width="123" height="48" rx="8" fill="#fff" stroke="#6b7779"/><text x="427" y="260" text-anchor="middle">新样本 x*</text>
+<rect x="605" y="230" width="120" height="48" rx="8" fill="#fff" stroke="#6b7779"/><text x="665" y="260" text-anchor="middle">预测 y*</text>
+<text x="40" y="320">训练阶段用已知标签学习参数；应用阶段只输入新样本，标签未知。</text>'''
+save('learning-process.svg','课件主线：从训练数据到新样本预测',s)
+
+s='''
+<g transform="translate(20 55)"><rect width="225" height="250" rx="10" fill="#fbfbf8" stroke="#d6ddd8"/><text x="112" y="28" text-anchor="middle" font-weight="bold">分类：输出离散类别</text><path d="M35 210V55M35 210H205" class="axis"/><path d="M65 195L175 70" class="main"/>
+<g fill="#087f8c">''' + ''.join(f'<circle cx="{x}" cy="{y}" r="6"/>' for x,y in [(62,173),(78,160),(88,184),(95,150)]) + '''</g><g fill="#a34b32">''' + ''.join(f'<circle cx="{x}" cy="{y}" r="6"/>' for x,y in [(145,105),(160,92),(174,116),(184,82)]) + '''</g><text x="112" y="235" text-anchor="middle">例如：年轻 / 老年</text></g>
+<g transform="translate(268 55)"><rect width="225" height="250" rx="10" fill="#fbfbf8" stroke="#d6ddd8"/><text x="112" y="28" text-anchor="middle" font-weight="bold">回归：输出连续数值</text><path d="M35 210V55M35 210H205" class="axis"/><path d="M48 192L195 70" class="main"/><g fill="#a34b32">''' + ''.join(f'<circle cx="{x}" cy="{y}" r="5"/>' for x,y in [(52,187),(74,174),(93,158),(118,139),(146,112),(180,83)]) + '''</g><text x="112" y="235" text-anchor="middle">例如：面积 → 房价</text></g>
+<g transform="translate(516 55)"><rect width="225" height="250" rx="10" fill="#fbfbf8" stroke="#d6ddd8"/><text x="112" y="28" text-anchor="middle" font-weight="bold">聚类：没有给定标签</text><g fill="#087f8c">''' + ''.join(f'<circle cx="{x}" cy="{y}" r="7"/>' for x,y in [(65,90),(82,73),(92,103)]) + '''</g><g fill="#a34b32">''' + ''.join(f'<rect x="{x-7}" y="{y-7}" width="14" height="14"/>' for x,y in [(155,92),(177,75),(178,108)]) + '''</g><ellipse cx="80" cy="88" rx="42" ry="38" fill="none" stroke="#087f8c"/><ellipse cx="170" cy="92" rx="42" ry="38" fill="none" stroke="#a34b32"/><text x="112" y="178" text-anchor="middle">分组取决于特征与准则</text><text x="112" y="235" text-anchor="middle">颜色、形状、大小</text></g>'''
+save('intro-tasks.svg','分类、回归与聚类的输出差异',s)
+
+def bar(x,y,w,h,color,label,value):
+    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#edf0e9"/><rect x="{x}" y="{y}" width="{w*value:.1f}" height="{h}" fill="{color}"/><text x="{x}" y="{y-8}">{label} = {value:.3f}</text>'
+s='<defs><marker id="arrb" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#087f8c"/></marker></defs>'
+s+='<text x="95" y="72" font-weight="bold">看到晚霞之前：先验</text>'+bar(55,105,250,35,'#087f8c','P(晴)',265/365)+bar(55,190,250,35,'#a34b32','P(非晴)',100/365)
+s+='<path d="M330 165H430" stroke="#087f8c" stroke-width="3" marker-end="url(#arrb)"/><text x="380" y="135" text-anchor="middle">证据：晚霞</text><text x="380" y="190" text-anchor="middle">似然 0.7 / 0.1</text>'
+s+='<text x="500" y="72" font-weight="bold">看到晚霞之后：后验</text>'+bar(455,105,250,35,'#087f8c','P(晴 | 晚霞)',.948849)+bar(455,190,250,35,'#a34b32','P(非晴 | 晚霞)',.051151)
+s+='<text x="55" y="295">似然比 0.7 / 0.1 = 7，使证据明显偏向“晴”；后验仍同时受先验影响。</text>'
+save('bayes-update.svg','天气例：证据如何把先验更新为后验',s)
+
+s='''<g transform="translate(30 60)"><rect width="330" height="245" rx="10" fill="#fbfbf8" stroke="#d6ddd8"/><text x="165" y="25" text-anchor="middle" font-weight="bold">线性可分：存在一条直线分开两类</text><path d="M35 215V45M35 215H300" class="axis"/><path d="M135 210L220 48" class="main"/>'''+''.join(f'<circle cx="{x}" cy="{y}" r="7" fill="#087f8c"/>' for x,y in [(70,170),(90,150),(102,185),(120,145)])+''.join(f'<rect x="{x-7}" y="{y-7}" width="14" height="14" fill="#a34b32"/>' for x,y in [(205,130),(230,105),(245,145),(267,90)])+'''</g>
+<g transform="translate(400 60)"><rect width="330" height="245" rx="10" fill="#fbfbf8" stroke="#d6ddd8"/><text x="165" y="25" text-anchor="middle" font-weight="bold">线性不可分：XOR</text><path d="M35 215V45M35 215H300" class="axis"/><circle cx="90" cy="165" r="8" fill="#087f8c"/><circle cx="250" cy="75" r="8" fill="#087f8c"/><rect x="82" y="67" width="16" height="16" fill="#a34b32"/><rect x="242" y="157" width="16" height="16" fill="#a34b32"/><text x="165" y="235" text-anchor="middle">任意直线都会让至少一个点落错侧</text></g>'''
+save('linear-separability.svg','线性可分与线性不可分的几何区别',s)
+
+s='''<defs><marker id="arrm" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#087f8c"/></marker></defs>
+<text x="55" y="70" font-weight="bold">训练阶段：4 类的一对一分类器</text><text x="55" y="100">A/B　A/C　A/D　B/C　B/D　C/D</text><text x="55" y="130">共 4×3/2 = 6 个模型</text><path d="M310 115H390" stroke="#087f8c" stroke-width="2" marker-end="url(#arrm)"/>
+<text x="430" y="55" font-weight="bold">测试阶段：一个样本走淘汰树</text>
+<g text-anchor="middle"><rect x="420" y="85" width="110" height="42" rx="7" fill="#e6f2f0" stroke="#087f8c"/><text x="475" y="111">A vs B</text><rect x="610" y="85" width="110" height="42" rx="7" fill="#e6f2f0" stroke="#087f8c"/><text x="665" y="111">C vs D</text><rect x="515" y="195" width="110" height="48" rx="7" fill="#f4efe3" stroke="#a88442"/><text x="570" y="216">胜者 1</text><text x="570" y="234">vs 胜者 2</text><rect x="525" y="285" width="90" height="40" rx="7" fill="#fff" stroke="#6b7779"/><text x="570" y="310">最终类别</text></g>
+<g stroke="#087f8c" stroke-width="2" marker-end="url(#arrm)"><path d="M475 127L545 190"/><path d="M665 127L595 190"/><path d="M570 243V280"/></g><text x="55" y="225">一条测试路径只做 3 次比较 = K-1。</text><text x="55" y="260">“训练 6 个模型”与“测试比较 3 次”不是同一个计数。</text>'''
+save('multiclass-tree.svg','四分类示例：两两训练与二叉淘汰测试',s)
+
+s='''<path d="M65 285H700M90 315V55" class="axis"/><path d="M100 70L500 300" class="alt"/><path d="M210 55L385 305" class="main"/>
+<g fill="#087f8c">'''+''.join(f'<circle cx="{x}" cy="{y}" r="6"/>' for x,y in [(135,110),(155,95),(170,130),(190,112),(205,145)])+'''</g><g fill="#6b7779">'''+''.join(f'<circle cx="{x}" cy="{y}" r="6"/>' for x,y in [(400,220),(425,205),(448,235),(465,215),(490,245)])+'''</g>
+<circle cx="342" cy="268" r="9" fill="#a34b32"/><circle cx="210" cy="105" r="9" fill="#a34b32"/><text x="520" y="95">虚线：初始边界</text><text x="520" y="120">x₁ + x₂ - 0.5 = 0</text><text x="520" y="165">实线：批量修正后</text><text x="520" y="190">1.42x₁ + 0.51x₂ - 0.5 = 0</text><text x="520" y="235">红点：本轮两个错分样本</text><text x="95" y="340">课件例 1：η = 0.7；更新后全部训练点被正确分类。</text>'''
+save('perceptron-update.svg','感知机课堂例 1：错分点推动决策边界旋转',s)
+
+s='''<defs><marker id="arrf" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#087f8c"/></marker></defs><path d="M70 275H690M90 305V55" class="axis"/>
+<g fill="#087f8c">'''+''.join(f'<circle cx="{x}" cy="{y}" r="7"/>' for x,y in [(175,210),(190,175),(210,230),(230,150),(245,195)])+'''</g><g fill="#a34b32">'''+''.join(f'<rect x="{x-7}" y="{y-7}" width="14" height="14"/>' for x,y in [(430,165),(455,115),(475,205),(500,145),(525,185)])+'''</g><path d="M120 255L600 95" stroke="#087f8c" stroke-width="3" marker-end="url(#arrf)"/><text x="530" y="80">投影方向 w</text><path d="M145 310H585" stroke="#6b7779"/><g stroke="#6b7779">'''+''.join(f'<path d="M{x} 302V318"/>' for x in [220,240,260,440,460,480])+'''</g><text x="350" y="340" text-anchor="middle">投影后：同类紧凑、两类均值相距远</text>'''
+save('fisher-projection.svg','Fisher 线性鉴别：寻找类间远、类内紧的投影',s)
+
+print('Generated 13 deterministic SVG figures.')

@@ -10,6 +10,16 @@ def close(a,b):return np.allclose(a,b,rtol=1e-8,atol=1e-9)
 p=(265*.7)/(265*.7+100*.1)
 check('weather posterior',close(p,185.5/195.5))
 check('weather without sunset',close(265*.3/(265*.3+100*.9),79.5/169.5))
+# Chapter 1 course example: least-squares fit of the 13 slide points.
+house_x=np.array([35,40,45,65,74,80,120,140,230,300,400,500,600.])
+house_y=np.array([150,170,190,200,224,245,320,400,640,780,900,1100,1300.])
+house_A=np.c_[house_x,np.ones(len(house_x))]
+house_coef=np.linalg.lstsq(house_A,house_y,rcond=None)[0]
+check('intro house-price slide example',close(house_coef,[2.05602634160209,93.3620575329315]) and close(house_coef@[90,1],278.404428277119))
+# Chapter 2 course example: rounded probabilities printed on the slides.
+melon_yes=np.prod([.471,.375,.625,.750,.875,.750,.750,1.959,.788])
+melon_no=np.prod([.529,.333,.333,.444,.222,.222,.667,1.203,.066])
+check('watermelon displayed-factor recomputation',abs(melon_yes-.0629)<.0001 and abs(melon_no-6.8e-5)<5e-6 and melon_yes>melon_no)
 check('Beta MAP and predictive differ',close(19/33,.5757575757575758) and close(20/35,.5714285714285714))
 boundary=1+math.log(4)/2
 check('Gaussian prior-shift boundary',abs(-2*boundary+2+math.log(4))<1e-12)
@@ -21,6 +31,16 @@ for x1 in [-3.,0.,3.,7.]:
     check(f'Gaussian quadratic boundary x1={x1}',abs(g(np.array([x1,x2]),0)-g(np.array([x1,x2]),1))<1e-10)
 a=np.array([3,3]);b=np.array([1,2])
 check('distance example',close(np.linalg.norm(a-b),math.sqrt(5)) and close(abs(a-b).sum(),3) and close(abs(a-b).max(),2) and close(a@b/(np.linalg.norm(a)*np.linalg.norm(b)),9/math.sqrt(90)))
+# Chapter 3 slide examples: batch and online perceptron updates.
+w0=np.array([1.,1.,-.5]);xa=np.array([.4,.05,1.]);xb=np.array([-.2,.75,1.])
+check('perceptron batch slide example',close(w0+.7*xa-.7*xb,[1.42,.51,-.5]))
+online_x=np.array([[-1.,0.,1.],[0.,1.,1.],[0.,-1.,1.],[1.,0.,1.]])
+online_d=np.array([1.,1.,-1.,-1.]);online_w=np.zeros(3)
+for xi,di in zip(online_x,online_d):
+    score=online_w@xi
+    if (di==1 and score<=0) or (di==-1 and score>0):online_w+=di*xi
+check('perceptron online slide example',close(online_w,[-1,1,0]) and close(online_x@online_w,[1,1,-1,-1]))
+check('four-class pairwise and tournament counts',4*(4-1)//2==6 and 4-1==3)
 check('tree information gain',close(1+2*(.75*math.log2(.75)+.25*math.log2(.25))/2,.18872187554086717))
 check('three-classifier majority',close(3*.7**2*.3+.7**3,.784))
 check('AdaBoost multiplier',close(math.exp(2*.5*math.log(.7/.3)),7/3))

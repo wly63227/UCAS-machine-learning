@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-label="课件主线：从训练数据到新样本预测"><rect width="760" height="360" fill="#fff"/><style>text{font:14px sans-serif;fill:#23383b}.axis{stroke:#6b7779;stroke-width:1;fill:none}.main{stroke:#087f8c;fill:none;stroke-width:3}.alt{stroke:#a34b32;fill:none;stroke-width:3;stroke-dasharray:8 5}</style><text x="40" y="30" font-weight="bold">课件主线：从训练数据到新样本预测</text>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#087f8c"/></marker></defs>
+<g text-anchor="middle">
+<rect x="35" y="105" width="145" height="70" rx="10" fill="#e6f2f0" stroke="#087f8c"/><text x="108" y="135" font-weight="bold">原始观测与标签</text><text x="108" y="158">训练数据 (x, y)</text>
+<rect x="225" y="105" width="145" height="70" rx="10" fill="#f4efe3" stroke="#a88442"/><text x="298" y="135" font-weight="bold">特征表达</text><text x="298" y="158">x ∈ R^d</text>
+<rect x="415" y="105" width="145" height="70" rx="10" fill="#e6f2f0" stroke="#087f8c"/><text x="488" y="135" font-weight="bold">学习算法</text><text x="488" y="158">拟合模型参数</text>
+<rect x="605" y="105" width="120" height="70" rx="10" fill="#f4efe3" stroke="#a88442"/><text x="665" y="135" font-weight="bold">训练模型</text><text x="665" y="158">f(x)</text>
+</g>
+<g stroke="#087f8c" stroke-width="2" marker-end="url(#arrow)"><path d="M180 140H220"/><path d="M370 140H410"/><path d="M560 140H600"/></g>
+<path d="M488 190V250H665" fill="none" stroke="#087f8c" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="365" y="230" width="123" height="48" rx="8" fill="#fff" stroke="#6b7779"/><text x="427" y="260" text-anchor="middle">新样本 x*</text>
+<rect x="605" y="230" width="120" height="48" rx="8" fill="#fff" stroke="#6b7779"/><text x="665" y="260" text-anchor="middle">预测 y*</text>
+<text x="40" y="320">训练阶段用已知标签学习参数；应用阶段只输入新样本，标签未知。</text></svg>

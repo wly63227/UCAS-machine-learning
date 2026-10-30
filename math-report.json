@@ -1,8 +1,10 @@
 {
-  "passed": 28,
+  "passed": 33,
   "checks": [
     "weather posterior",
     "weather without sunset",
+    "intro house-price slide example",
+    "watermelon displayed-factor recomputation",
     "Beta MAP and predictive differ",
     "Gaussian prior-shift boundary",
     "Gaussian quadratic boundary x1=-3.0",
@@ -10,6 +12,9 @@
     "Gaussian quadratic boundary x1=3.0",
     "Gaussian quadratic boundary x1=7.0",
     "distance example",
+    "perceptron batch slide example",
+    "perceptron online slide example",
+    "four-class pairwise and tournament counts",
     "tree information gain",
     "three-classifier majority",
     "AdaBoost multiplier",
