@@ -1,6 +1,6 @@
-# 机器学习课程教材初稿
+# 机器学习课程教材整理版
 
-在线阅读：[机器学习课程教材](https://wly63227.github.io/UCAS-machine-learning/)。也可以从仓库内的 [学习入口](docs/index.md) 开始，或本地构建后打开 `site/index.html`。当前正文覆盖十章主线：前三章用 2026 主课件，后续用往年资料。**全资料逐页视觉验收尚未完成**，详见 [建设与验收记录](docs/audit.md)。
+在线阅读：[机器学习课程教材](https://wly63227.github.io/UCAS-machine-learning/)。也可以[下载 PDF 整理版](output/pdf/UCAS机器学习课程教材-整理版.pdf)，或从仓库内的 [学习入口](docs/index.md) 开始。当前正文覆盖十章主线：前三章用 2026 主课件，后续用往年资料。**全资料逐页视觉验收尚未完成**，详见 [建设与验收记录](docs/audit.md)。
 
 ## 环境与命令
 
@@ -14,6 +14,7 @@ python scripts/indexes.py
 python scripts/verify_math.py
 node scripts/build.mjs
 node scripts/check.mjs
+node scripts/build-pdf.mjs
 python -m http.server 8765 --bind 127.0.0.1 --directory site
 ```
 
@@ -24,7 +25,8 @@ python -m http.server 8765 --bind 127.0.0.1 --directory site
 ## 文件结构
 
 - `docs/`：学习指南、十章正文、索引、练习、验收与维护说明。
-- `docs/assets/`：6 张确定性教学 SVG。
+- `docs/assets/`：21 张确定性教学 SVG。
+- `output/pdf/`：课程教材 PDF 整理版；构建时同步复制到网站下载资源。
 - `scripts/`：盘点、索引、图表、数学检查、静态构建与链接／基线检查。
 - `sources/`：资料清单、逐页状态 CSV、核心知识 JSON；提取文本与审查截图不纳入 Git。
 - `site/`：生成网站，可静态托管，不手工编辑。

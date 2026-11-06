@@ -10,7 +10,7 @@ const docs = path.join(root, 'docs');
 const tempDir = path.join(root, 'tmp', 'pdfs');
 const outputDir = path.join(root, 'output', 'pdf');
 const htmlPath = path.join(tempDir, '机器学习笔记-打印版.html');
-const outputPath = path.join(outputDir, 'UCAS机器学习笔记-初稿.pdf');
+const outputPath = path.join(outputDir, 'UCAS机器学习课程教材-整理版.pdf');
 const edge = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 
 const chapters = Array.from({length: 10}, (_, i) =>
@@ -123,8 +123,8 @@ img { display: block; max-width: 92%; max-height: 165mm; margin: 5mm auto; break
 hr { border: 0; border-top: 1px solid #cbd6dc; margin: 8mm 0; }
 .print-note { margin-top: 10mm; padding: 4mm; background: #fff8e6; border: 1px solid #e5c77c; color: #715311; }
 `;
-const html = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>UCAS机器学习笔记（初稿）</title><style>${katexCss}\n${css}</style></head><body>
-<section class="cover"><div class="kicker">UCAS · MACHINE LEARNING</div><h1>机器学习课程笔记</h1><div class="subtitle">从概率基础到神经网络的十章自学教材</div><div class="meta">整理日期：2026-10-30<br>在线版：https://wly63227.github.io/UCAS-machine-learning/<br><span class="status">教材初稿 · 全资料逐页视觉验收尚未完成</span></div></section>
+const html = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>UCAS机器学习课程教材（整理版）</title><style>${katexCss}\n${css}</style></head><body>
+<section class="cover"><div class="kicker">UCAS · MACHINE LEARNING</div><h1>机器学习课程教材</h1><div class="subtitle">从概率基础到神经网络的十章自学教材</div><div class="meta">整理日期：2026-11-06<br>在线版：https://wly63227.github.io/UCAS-machine-learning/<br><span class="status">课程整理版 · 来源边界与视觉核对状态见附录</span></div></section>
 <section class="toc-page"><h1>目录</h1><ol class="book-toc">${toc}</ol><p class="print-note">正文以 2026 主课件为优先来源，后续章节包含往年资料延伸。来源边界与验收状态见附录。</p></section>
 ${content}</body></html>`;
 fs.writeFileSync(htmlPath, html);

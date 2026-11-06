@@ -330,8 +330,8 @@ $$
 
 分别对簇内坐标取算术平均，课件给出
 
-$$\boldsymbol\mu'_1=(0.473,0.214),qquad
-\boldsymbol\mu'_2=(0.394,0.066),qquad
+$$\boldsymbol\mu'_1=(0.473,0.214),\qquad
+\boldsymbol\mu'_2=(0.394,0.066),\qquad
 \boldsymbol\mu'_3=(0.623,0.388).$$
 
 以 $C_2$ 为例直接复算：

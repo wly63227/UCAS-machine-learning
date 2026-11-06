@@ -114,7 +114,7 @@ $$C(d,q)=\binom{d}{q}=\frac{d!}{q!\ (d-q)!}.$$
 两类数据为
 
 $$
-W_1=\begin{bmatrix}1&2&4\\3&3&5\\4&4&7\end{bmatrix},qquad
+W_1=\begin{bmatrix}1&2&4\\3&3&5\\4&4&7\end{bmatrix},\qquad
 W_2=\begin{bmatrix}2&7&6\\5&8&8\\6&9&9\end{bmatrix},
 $$
 

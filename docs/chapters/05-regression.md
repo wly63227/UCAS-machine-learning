@@ -188,7 +188,7 @@ $$
 
 令模型为 $\hat y=ax+b$。一元最小二乘可把正规方程化成
 
-$$a=\frac{N\sum_i x_i y_i-(\sum_i x_i)(\sum_i y_i)}{N\sum_i x_i^2-(\sum_i x_i)^2},qquad
+$$a=\frac{N\sum_i x_i y_i-(\sum_i x_i)(\sum_i y_i)}{N\sum_i x_i^2-(\sum_i x_i)^2},\qquad
 b=\frac{\sum_i y_i-a\sum_i x_i}{N}.$$
 
 本题统计量为
@@ -200,7 +200,7 @@ $$N=13,\quad \sum x_i=2629,\quad \sum y_i=6619,\quad
 
 $$
 a=\frac{13\times2235376-2629\times6619}{13\times967851-2629^2}
-\approx2.056026,qquad b\approx93.362058.
+\approx2.056026,\qquad b\approx93.362058.
 $$
 
 因此
